@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Probability Formula Sheet · KTU</title>
+<style>
+:root{--bg:#0a0a0b;--tx:#ececec;--mu:#8b8b93;--ac:#ff4d4f;--ln:#232326;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.65 "Inter",system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:720px;margin:0 auto;padding:28px 22px 80px}
+h1{font-size:1.6rem;font-weight:700;margin:6px 0 4px;letter-spacing:-.01em}
+.sub{color:var(--mu);margin:0 0 36px;font-size:.92rem}
+html{background:var(--bg)}
+#nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;display:flex;justify-content:safe center;gap:6px;overflow-x:auto;padding:10px 14px;background:rgba(10,10,11,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--ln);scrollbar-width:none}
+#nav::-webkit-scrollbar{display:none}
+#nav button{flex:none;background:transparent;border:0;border-bottom:2px solid transparent;color:var(--mu);font:600 .78rem/1 inherit;font-family:inherit;letter-spacing:.1em;text-transform:uppercase;padding:10px 12px;cursor:pointer;transition:.15s}
+#nav button:hover{color:var(--tx)}
+#nav button.on{color:var(--ac);border-bottom-color:var(--ac)}
+h2{scroll-margin-top:72px;font-size:.8rem;font-weight:600;color:var(--ac);text-transform:uppercase;letter-spacing:.14em;margin:64px 0 8px}
+.card{border-bottom:1px solid var(--ln);padding:30px 0}
+.row{display:flex;justify-content:space-between;align-items:center;gap:16px}
+h3{font-size:1.02rem;font-weight:600;margin:0}
+.btn{flex:none;width:30px;height:30px;border-radius:50%;border:1px solid var(--ac);background:transparent;color:var(--ac);font-size:1.15rem;line-height:1;cursor:pointer;transition:.15s}
+.btn:hover,.open .btn{background:var(--ac);color:#0a0a0b}
+.eq{margin-top:18px;font-size:1.18rem;overflow-x:auto;overflow-y:hidden}
+.eq mjx-container{margin:10px 0!important;text-align:left!important;min-width:0!important}
+.more{display:none;margin-top:30px}.open .more{display:block}
+h4{margin:30px 0 12px;font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ac)}
+h4:first-child{margin-top:0}
+.more ul,.more ol{margin:0;padding:0;list-style:none}
+.more li{margin:0 0 14px;color:var(--tx)}
+.more ul li{color:#cfcfd4}
+.more ol{counter-reset:s}.more ol li{counter-increment:s;padding-left:30px;position:relative}
+.more ol li:before{content:counter(s);position:absolute;left:0;top:0;color:var(--mu);font-size:.85rem}
+.q{border-left:2px solid var(--ac);padding:2px 0 2px 16px;color:var(--tx)}
+.ans{color:var(--ac);font-weight:600}.ans{margin-top:22px}.ans:before{content:"ANSWER";display:block;font-size:.72rem;letter-spacing:.14em;margin-bottom:6px}
+.tip{color:var(--mu);font-size:.92rem;margin-top:26px}
+mjx-container{color:inherit}
+mjx-container svg{max-width:100%}
+</style>
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['$$','$$']]},svg:{fontCache:'none'}}</script>
+</head><body><nav id="nav"><button>Module 1</button><button>Module 2</button><button>Module 3</button><button>Module 4</button></nav><main>
+<h1>Probability Formula Sheet</h1>
+<p class="sub">KTU · Modules 1–4. Tap + on any formula to see the meaning and a solved example.</p>
+<div id="app"></div></main>
+<script>
+const raw=String.raw`
+# Module 1 · Discrete Distributions
+@ PMF (Probability Mass Function)
+E \text{(i) } f(x)\ge 0
+E \text{(ii) } \sum f(x)=1
+V $f(x)$ = chance that $X$ takes the value $x$
+V $\sum$ = add up over every value of $x$
+Q Find $k$ if $f(x)=kx$ for $x=1,2,3,4$.
+S Use $\sum f(x)=1$.
+S $k(1)+k(2)+k(3)+k(4)=1$
+S $10k=1$
+S Check $f(x)\ge0$: all values are positive ✓
+A $k=\dfrac{1}{10}$
+T Always use “sum = 1” to find the unknown constant.
+@ CDF (Cumulative Distribution Function)
+E F(x)=P(X\le x)=\sum_{t\le x}f(t)
+V $F(x)$ = chance that $X$ is $x$ or smaller (a running total)
+Q $X$ takes $0,1,2$ with $f=0.2,\,0.5,\,0.3$. Find $F(1)$.
+S $F(1)=P(X\le1)$
+S $=f(0)+f(1)$
+S $=0.2+0.5$
+A $F(1)=0.7$
+@ Mean (Expectation)
+E E(X)=\sum x\,f(x)
+V $E(X)$ = average value of $X$
+V $x$ = a value, $f(x)$ = its chance
+Q Find $E(X)$ for the table above.
+S $E(X)=0(0.2)+1(0.5)+2(0.3)$
+S $=0+0.5+0.6$
+A $E(X)=1.1$
+@ Properties of Mean
+E E(aX+b)=aE(X)+b
+E E(X+Y)=E(X)+E(Y)
+E E(XY)=E(X)\,E(Y)\quad(\text{only if } X,Y \text{ independent})
+V $a,b$ = constants
+V $X,Y$ = random variables
+Q If $E(X)=1.1$, find $E(3X+2)$.
+S $E(3X+2)=3E(X)+2$
+S $=3(1.1)+2$
+S $=3.3+2$
+A $E(3X+2)=5.3$
+@ Variance
+E Var(X)=E(X^2)-[E(X)]^2
+E E(X^2)=\sum x^2 f(x)
+V $Var(X)$ = how spread out $X$ is
+Q Find $Var(X)$ for $f=0.2,0.5,0.3$ at $x=0,1,2$.
+S $E(X^2)=0^2(0.2)+1^2(0.5)+2^2(0.3)$
+S $=0+0.5+1.2=1.7$
+S $[E(X)]^2=(1.1)^2=1.21$
+S $Var(X)=1.7-1.21$
+A $Var(X)=0.49$
+T Variance is never negative. If you get a negative answer, recheck $E(X^2)$.
+@ Properties of Variance
+E Var(aX+b)=a^2\,Var(X)
+E Var(X+Y)=Var(X)+Var(Y)\quad(\text{if independent})
+V Adding $b$ does not change the spread.
+V Multiplying by $a$ multiplies the variance by $a^2$.
+Q If $Var(X)=0.49$, find $Var(3X+2)$.
+S $Var(3X+2)=3^2\,Var(X)$
+S $=9\times0.49$
+A $Var(3X+2)=4.41$
+T The “+2” vanishes. Square the multiplier.
+@ Binomial Distribution (PMF)
+E f(x)=\binom{n}{x}p^{x}q^{\,n-x},\quad x=0,1,\dots,n
+E q=1-p
+V $n$ = number of trials
+V $p$ = chance of success each time, $q$ = chance of failure
+V $x$ = number of successes
+Q A fair coin is tossed 4 times. Find $P(\text{exactly 2 heads})$.
+S $n=4,\ p=\tfrac12,\ q=\tfrac12,\ x=2$
+S $P=\binom{4}{2}\left(\tfrac12\right)^2\left(\tfrac12\right)^2$
+S $\binom{4}{2}=6$
+S $P=6\times\tfrac{1}{16}$
+A $P=\dfrac{3}{8}$
+@ Mean & Variance of Binomial
+E \text{Mean}=np
+E \text{Variance}=npq
+V Same symbols as the Binomial PMF
+Q $X\sim B(10,\,0.3)$. Find the mean and variance.
+S $n=10,\ p=0.3,\ q=0.7$
+S $\text{Mean}=np=10\times0.3=3$
+S $\text{Variance}=npq=10\times0.3\times0.7$
+A Mean $=3$, Variance $=2.1$
+@ Poisson Distribution
+E f(x,\lambda)=\begin{cases}\dfrac{e^{-\lambda}\lambda^{x}}{x!}, & x=0,1,2,\dots\\[6pt] 0, & \text{otherwise}\end{cases}
+V $\lambda$ = average number of events
+V $x$ = number of events we want
+V $e\approx2.718$
+Q Calls arrive at an average of 2 per minute. Find $P(\text{exactly 3 calls})$.
+S $\lambda=2,\ x=3$
+S $P=\dfrac{e^{-2}\,2^3}{3!}$
+S $e^{-2}=0.1353,\ 2^3=8,\ 3!=6$
+S $P=0.1353\times\dfrac{8}{6}$
+A $P\approx0.1804$
+T Poisson = counting rare events in a fixed time or space.
+@ Mean & Variance of Poisson
+E \text{Mean}=\lambda
+E \text{Variance}=\lambda
+V Mean and variance are both equal to $\lambda$.
+Q Average 3 defects per sheet. Find the mean, variance and S.D.
+S $\lambda=3$
+S Mean $=3$, Variance $=3$
+S $\text{S.D.}=\sqrt{3}$
+A Mean $=3$, Var $=3$, S.D. $\approx1.732$
+@ Joint PMF (Discrete Bivariate)
+E \text{(i) } f(x,y)\ge0
+E \text{(ii) } \sum_x\sum_y f(x,y)=1
+V $f(x,y)$ = chance that $X=x$ and $Y=y$ together
+Q $f(x,y)=k(x+y)$ for $x=0,1$ and $y=0,1$. Find $k$.
+S $f(0,0)=0,\ f(0,1)=k,\ f(1,0)=k,\ f(1,1)=2k$
+S Total $=1\Rightarrow 0+k+k+2k=1$
+S $4k=1$
+A $k=\dfrac{1}{4}$
+@ Marginal PMF
+E f_X(x)=\sum_y f(x,y)
+E f_Y(y)=\sum_x f(x,y)
+V Add across the other variable to get one variable alone.
+Q For $f(x,y)=\dfrac{x+y}{4}$, find $f_X(x)$ and $f_Y(y)$.
+S $f_X(0)=f(0,0)+f(0,1)=0+\tfrac14=\tfrac14$
+S $f_X(1)=f(1,0)+f(1,1)=\tfrac14+\tfrac24=\tfrac34$
+S $f_Y(0)=f(0,0)+f(1,0)=0+\tfrac14=\tfrac14$
+S $f_Y(1)=f(0,1)+f(1,1)=\tfrac14+\tfrac24=\tfrac34$
+A $f_X=\tfrac14,\tfrac34$ and $f_Y=\tfrac14,\tfrac34$
+@ Independent Random Variables (Discrete)
+E f(x,y)=f_X(x)\cdot f_Y(y)\quad\text{for all }x,y
+V $X,Y$ are independent if joint = product of marginals.
+Q Are $X,Y$ above independent?
+S Test $(0,0)$: $f(0,0)=0$
+S $f_X(0)\,f_Y(0)=\tfrac14\times\tfrac14=\tfrac1{16}$
+S $0\ne\tfrac1{16}$
+A Not independent
+T One failing pair is enough to prove “not independent”.
+# Module 2 · Continuous Distributions
+@ PDF (Probability Density Function)
+E \text{(i) } f(x)\ge0
+E \text{(ii) } \int_{-\infty}^{\infty}f(x)\,dx=1
+E P(a\le X\le b)=\int_a^b f(x)\,dx
+V $f(x)$ = height of the curve
+V Area under the curve = probability
+Q $f(x)=kx^2$ for $0\le x\le3$, else $0$. Find $k$.
+S $\int_0^3 kx^2\,dx=1$
+S $k\left[\dfrac{x^3}{3}\right]_0^3=1$
+S $k\left(\dfrac{27}{3}-0\right)=1$
+S $9k=1$
+A $k=\dfrac{1}{9}$
+@ CDF (Continuous)
+E F(x)=P(X\le x)=\int_{-\infty}^{x}f(t)\,dt
+V Area under the curve from far left up to $x$
+Q For $f(x)=\dfrac{x^2}{9}$ on $0\le x\le3$, find $F(x)$ and $P(X\le1)$.
+S $F(x)=\int_0^x \dfrac{t^2}{9}\,dt$
+S $=\dfrac19\left[\dfrac{t^3}{3}\right]_0^x$
+S $=\dfrac{x^3}{27}$
+S $P(X\le1)=F(1)=\dfrac{1}{27}$
+A $F(x)=\dfrac{x^3}{27},\quad P(X\le1)=\dfrac1{27}$
+@ Mean (Continuous)
+E E(X)=\int_{-\infty}^{\infty}x\,f(x)\,dx
+V Same as discrete, but an integral instead of a sum
+Q $f(x)=\dfrac{x^2}{9}$, $0\le x\le3$. Find $E(X)$.
+S $E(X)=\int_0^3 x\cdot\dfrac{x^2}{9}\,dx$
+S $=\dfrac19\int_0^3x^3\,dx$
+S $=\dfrac19\left[\dfrac{x^4}{4}\right]_0^3$
+S $=\dfrac19\cdot\dfrac{81}{4}$
+A $E(X)=\dfrac94=2.25$
+@ Variance & Standard Deviation
+E Var(X)=E(X^2)-[E(X)]^2
+E E(X^2)=\int x^2f(x)\,dx
+E \text{S.D.}=\sqrt{Var(X)}
+V S.D. brings the spread back to the same units as $X$
+Q For $f(x)=\dfrac{x^2}{9}$ on $0$ to $3$, find $Var$ and S.D.
+S $E(X^2)=\dfrac19\int_0^3x^4dx=\dfrac19\cdot\dfrac{243}{5}=\dfrac{27}{5}=5.4$
+S $[E(X)]^2=\left(\dfrac94\right)^2=\dfrac{81}{16}=5.0625$
+S $Var=5.4-5.0625=0.3375$
+S $\text{S.D.}=\sqrt{0.3375}$
+A $Var=0.3375$, S.D. $\approx0.581$
+@ Uniform (Rectangular) Distribution $U(\alpha,\beta)$
+E f(x)=\dfrac{1}{\beta-\alpha},\quad \alpha\le x\le\beta
+E f(x)=0\ \text{otherwise}
+V $\alpha$ = smallest value, $\beta$ = largest value
+V Every value in between is equally likely
+Q $X\sim U(2,6)$. Find $P(3\le X\le5)$.
+S $f(x)=\dfrac{1}{6-2}=\dfrac14$
+S $P=\int_3^5\dfrac14\,dx$
+S $=\dfrac{5-3}{4}$
+A $P=\dfrac12$
+@ Mean & Variance of Uniform
+E \text{Mean}=\dfrac{\alpha+\beta}{2}
+E \text{Variance}=\dfrac{(\beta-\alpha)^2}{12}
+V The mean is the middle point of the interval.
+Q $X\sim U(2,6)$. Find the mean and variance.
+S $\text{Mean}=\dfrac{2+6}{2}=4$
+S $\text{Variance}=\dfrac{(6-2)^2}{12}=\dfrac{16}{12}$
+A Mean $=4$, Variance $=\dfrac43$
+@ Normal Distribution $N(\mu,\sigma)$
+E f(x)=\dfrac{1}{\sigma\sqrt{2\pi}}\,e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+E Z=\dfrac{X-\mu}{\sigma}\sim N(0,1)\qquad(\mu=0,\ \sigma=1)
+V $\mu$ = mean (centre of the bell), $\sigma$ = standard deviation (width)
+V $Z$ = how many S.D.s away from the mean
+Q $X\sim N(50,10)$. Find $P(X>60)$. Given $P(0<Z<1)=0.3413$.
+S $Z=\dfrac{X-\mu}{\sigma}=\dfrac{60-50}{10}=1$
+S $P(X>60)=P(Z>1)$
+S $=0.5-P(0<Z<1)$
+S $=0.5-0.3413$
+A $P=0.1587$
+T Always convert to $Z$ first, then use the table. Right half of the curve = 0.5.
+@ Joint PDF (Continuous Bivariate)
+E f(x,y)\ge0
+E \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}f(x,y)\,dy\,dx=1
+V $f(x,y)$ = density at the point $(x,y)$
+V Volume under the surface = 1
+Q $f(x,y)=kxy$ for $0<x<1,\ 0<y<1$. Find $k$.
+S $\int_0^1\int_0^1 kxy\,dy\,dx=1$
+S Inner: $\int_0^1y\,dy=\tfrac12$
+S Outer: $\int_0^1x\,dx=\tfrac12$
+S $k\times\tfrac12\times\tfrac12=1\Rightarrow\tfrac k4=1$
+A $k=4$
+@ Probability from Joint PDF
+E P(a\le X\le b,\ c\le Y\le d)=\int_a^b\int_c^d f(x,y)\,dy\,dx
+V Inner limits go with $dy$, outer limits go with $dx$.
+Q With $f(x,y)=4xy$, find $P(0\le X\le\tfrac12,\ 0\le Y\le\tfrac12)$.
+S $P=\int_0^{1/2}\int_0^{1/2}4xy\,dy\,dx$
+S Inner: $\int y\,dy=\dfrac{y^2}{2}=\dfrac{1/4}{2}=\dfrac18$
+S Outer: $\int x\,dx=\dfrac18$
+S $P=4\times\dfrac18\times\dfrac18$
+A $P=\dfrac1{16}$
+@ Marginal PDF
+E f_X(x)=\int_{-\infty}^{\infty}f(x,y)\,dy
+E f_Y(y)=\int_{-\infty}^{\infty}f(x,y)\,dx
+V Integrate out the other variable.
+Q For $f(x,y)=4xy$ on the unit square, find $f_X$ and $f_Y$.
+S $f_X(x)=\int_0^14xy\,dy=4x\left[\dfrac{y^2}{2}\right]_0^1=4x\cdot\dfrac12=2x$
+S $f_Y(y)=\int_0^14xy\,dx=4y\cdot\dfrac12=2y$
+A $f_X(x)=2x,\quad f_Y(y)=2y$
+@ Independent Random Variables (Continuous)
+E f(x,y)=f_X(x)\cdot f_Y(y)
+V Joint density = product of the two marginals.
+Q Are $X,Y$ with $f(x,y)=4xy$ independent?
+S $f_X(x)=2x,\ f_Y(y)=2y$
+S $f_X\cdot f_Y=2x\times2y=4xy$
+S $4xy=f(x,y)$
+A Independent
+# Module 3 · Limit Theorems & Stochastic Process
+@ Markov’s Inequality
+E P(X\ge a)\le\dfrac{E(X)}{a}\qquad(X\ge0,\ a>0)
+V $E(X)$ = mean of $X$, $a$ = the cut-off value
+Q A shop’s mean daily sale is 10 units. Bound $P(X\ge50)$.
+S $E(X)=10,\ a=50$
+S $P(X\ge50)\le\dfrac{10}{50}$
+A $P(X\ge50)\le0.2$
+T Only for non-negative $X$. It gives an upper bound, not the exact value.
+@ Chebyshev’s Inequality
+E P(|X-\mu|\ge a)\le\dfrac{\sigma^2}{a^2}\qquad(a>0)
+E P(|X-\mu|<a)\ge1-\dfrac{\sigma^2}{a^2}
+V $\mu$ = mean, $\sigma^2$ = variance
+V $a$ = distance from the mean
+Q $\mu=20,\ \sigma^2=9$. Bound $P(|X-20|\ge6)$.
+S $\sigma^2=9,\ a=6$
+S $P\le\dfrac{\sigma^2}{a^2}=\dfrac{9}{36}$
+A $P\le\dfrac14$
+@ Strong Law of Large Numbers
+E P\left(\lim_{n\to\infty}\dfrac{X_1+X_2+\cdots+X_n}{n}=\mu\right)=1
+V $X_1,X_2,\dots$ = independent trials with the same mean $\mu$
+V The average of many trials settles at $\mu$.
+Q Why does the average of many fair-die rolls approach 3.5?
+S $\mu=\dfrac{1+2+3+4+5+6}{6}=3.5$
+S By the law, $\dfrac{S_n}{n}\to\mu$ with probability 1
+A The average $\to3.5$ as $n$ grows
+@ Central Limit Theorem
+E S_n=X_1+X_2+\cdots+X_n
+E E(S_n)=n\mu,\qquad Var(S_n)=n\sigma^2
+E Z=\dfrac{S_n-n\mu}{\sigma\sqrt n}\sim N(0,1)\quad(n\text{ large})
+V $\mu,\sigma$ = mean and S.D. of each $X$
+V $n$ = number of terms. A sum of many variables looks like a normal curve.
+Q $n=36,\ \mu=5,\ \sigma=3$. Find $P(S_n>190)$. Given $P(0<Z<0.56)=0.2123$.
+S $E(S_n)=n\mu=36\times5=180$
+S $\text{S.D.}=\sigma\sqrt n=3\times6=18$
+S $Z=\dfrac{190-180}{18}=0.56$
+S $P(Z>0.56)=0.5-0.2123$
+A $P\approx0.2877$
+@ Counting Process
+E N(0)=0\ \text{ and }\ N(t)\ge0
+E N(t)\ \text{is integer valued}
+E N(t_2)\ge N(t_1)\ \text{ for } t_2\ge t_1
+V $N(t)$ = number of events up to time $t$
+Q Is $N(t)$ = number of buses arrived up to time $t$ a counting process?
+S $N(0)=0$ (none at the start) ✓
+S $N(t)$ is a whole number ✓
+S The count never decreases ✓
+A Yes, it is a counting process
+T A count that can go down (people inside a shop) is NOT a counting process.
+@ Poisson Process (rate $\lambda>0$)
+E N(t)\ \text{has independent and stationary increments}
+E P[N(t)=n]=\dfrac{e^{-\lambda t}(\lambda t)^n}{n!},\quad n=0,1,2,\dots
+V $\lambda$ = rate (events per unit time), $t$ = length of time
+V $\lambda t$ = average count in time $t$
+Q Arrivals are Poisson with $\lambda=3$ per hour. Find $P(N(2)=4)$.
+S $\lambda t=3\times2=6,\ n=4$
+S $P=\dfrac{e^{-6}\,6^4}{4!}$
+S $e^{-6}=0.002479,\ 6^4=1296,\ 4!=24$
+S $P=0.002479\times\dfrac{1296}{24}=0.002479\times54$
+A $P\approx0.1339$
+@ Poisson Process (Alternative Definition)
+E N(0)=0
+E N(t)\ \text{has independent and stationary increments}
+E P[N(h)=1]=\lambda h+o(h)
+E P[N(h)\ge2]=o(h)
+V $h$ = a very tiny time gap
+V $o(h)$ = something much smaller than $h$
+Q $\lambda=2$ per minute. Estimate $P(\text{one arrival})$ in $h=0.01$ min.
+S $P[N(h)=1]\approx\lambda h$
+S $=2\times0.01$
+A $\approx0.02$
+@ Interarrival Time Distribution
+E T_k\sim\text{Exp}(\lambda),\quad k=1,2,\dots
+E f(t)=\begin{cases}\lambda e^{-\lambda t}, & t>0\\ 0, & \text{otherwise}\end{cases}
+V $T_k$ = waiting time between the $(k-1)$th and $k$th arrival
+V Mean waiting time $=\dfrac1\lambda$
+Q Arrivals have $\lambda=4$ per hour. Write $f(t)$ and the mean gap.
+S $f(t)=4e^{-4t},\ t>0$
+S $\text{Mean}=\dfrac1\lambda=\dfrac14\ \text{hour}$
+A Mean gap $=15$ minutes
+@ No-Arrival Probability
+E P(T_1>t)=P[\text{no arrivals in }[0,t]]=e^{-\lambda t}
+V First wait longer than $t$ means no arrivals till $t$.
+Q $\lambda=2$ per hour. Find $P(\text{first arrival takes more than 1.5 hours})$.
+S $P(T_1>t)=e^{-\lambda t}$
+S $\lambda t=2\times1.5=3$
+S $=e^{-3}$
+A $P\approx0.0498$
+# Module 4 · Markov Chains
+@ Markov Chain (Markov Property)
+E P(X_{n+1}=j\mid X_n=i,\,X_{n-1}=i_{n-1},\dots,X_0=i_0)=P(X_{n+1}=j\mid X_n=i)
+V Tomorrow depends only on today, not on the past.
+Q $P(\text{Rain tomorrow}\mid\text{Rain today})=0.7$. Find $P(X_3=R\mid X_2=R,X_1=S,X_0=R)$.
+S Markov property: the past $(X_1,X_0)$ is ignored
+S $P(X_3=R\mid X_2=R,X_1=S,X_0=R)=P(X_3=R\mid X_2=R)$
+A $=0.7$
+@ Transition Probability Matrix (TPM)
+E P_{ij}=P(X_{n+1}=j\mid X_n=i)
+E P_{ij}\ge0,\quad i,j\ge0
+E \sum_{j=0}^{\infty}P_{ij}=1,\quad i=0,1,2,\dots
+V $P_{ij}$ = chance of going from state $i$ to state $j$ in one step
+V Every row adds up to 1.
+Q $P=\begin{bmatrix}0.6&a\\ b&0.4\end{bmatrix}$ is a TPM. Find $a$ and $b$.
+S Row 1: $0.6+a=1\Rightarrow a=0.4$
+S Row 2: $b+0.4=1\Rightarrow b=0.6$
+A $a=0.4,\quad b=0.6$
+T Rows add to 1. Columns need not.
+@ Chapman–Kolmogorov (CK) Equation
+E P_{ij}^{n}=P\{X_{n+k}=j\mid X_k=i\},\quad n\ge0
+E P_{ij}^{n+m}=\sum_{k=0}^{\infty}P_{ik}^{n}\,P_{kj}^{m}
+V $P_{ij}^{n}$ = chance of going $i\to j$ in $n$ steps
+V $k$ = the middle state. In matrix form: $P^{(2)}=P\times P$
+Q $P=\begin{bmatrix}0.7&0.3\\0.4&0.6\end{bmatrix}$. Find $P_{00}^{(2)}$.
+S $P_{00}^{(2)}=P_{00}P_{00}+P_{01}P_{10}$
+S $=(0.7)(0.7)+(0.3)(0.4)$
+S $=0.49+0.12$
+A $P_{00}^{(2)}=0.61$
+@ Limiting Probabilities (Stationary Distribution)
+E \pi=\pi P
+E \sum_j\pi_j=1
+V $\pi_j$ = long-run chance of being in state $j$
+Q $P=\begin{bmatrix}0.7&0.3\\0.4&0.6\end{bmatrix}$. Find $\pi$.
+S $\pi_0=0.7\pi_0+0.4\pi_1\Rightarrow0.3\pi_0=0.4\pi_1\Rightarrow\pi_0=\tfrac43\pi_1$
+S $\pi_0+\pi_1=1$
+S $\tfrac43\pi_1+\pi_1=1\Rightarrow\tfrac73\pi_1=1$
+S $\pi_1=\tfrac37,\quad\pi_0=\tfrac47$
+A $\pi=\left(\dfrac47,\ \dfrac37\right)$
+@ Reachable, Communicate, Absorbing
+E i\to j\ \text{ if } P_{ij}^{(n)}>0 \text{ for some } n\ge1
+E i\leftrightarrow j\ \text{ if } i\to j \text{ and } j\to i
+E \text{Absorbing: } P_{ii}=1,\ P_{ij}=0\ \ \forall j\ne i
+V Reachable = you can get there. Communicate = you can go both ways.
+V Absorbing = once in, you never leave.
+Q Rows: state 0 $=[0.5,\,0.5,\,0]$, state 1 $=[0.3,\,0.4,\,0.3]$, state 2 $=[0,\,0,\,1]$. Classify the states.
+S $P_{01}=0.5>0\Rightarrow0\to1$; $P_{10}=0.3>0\Rightarrow1\to0$. So $0\leftrightarrow1$
+S $P_{12}=0.3>0\Rightarrow1\to2$, but state 2 never returns
+S $P_{22}=1\Rightarrow$ state 2 is absorbing
+A $0\leftrightarrow1$ communicate; $2$ is absorbing
+@ Irreducible Chain
+E \text{All states communicate (one single class)}
+V Every state can reach every other state.
+Q Is the chain in the last example irreducible? Is $\begin{bmatrix}0.7&0.3\\0.4&0.6\end{bmatrix}$?
+S First chain: state 2 cannot reach 0 or 1
+S So not all states communicate, hence not irreducible
+S Second chain: every entry $>0$, so $0\leftrightarrow1$
+A First: No. Second: Yes
+@ Recurrent and Transient States
+E \text{Recurrent state } i:\quad f_i=1
+E \text{Transient state } i:\quad f_i<1
+V $f_i$ = chance of returning to $i$ at least once
+V Recurrent = surely comes back. Transient = may never come back.
+Q Classify the states of the 3-state chain above.
+S State 2 is absorbing, so it returns with certainty: $f_2=1$
+S States 0, 1 can move to 2 and never return: $f<1$
+A 2 is recurrent; 0 and 1 are transient
+@ Recurrent / Transient Criteria
+E \text{Recurrent} \iff \sum_{n=1}^{\infty}P_{ii}^{(n)}=\infty
+E \text{Transient} \iff \sum_{n=1}^{\infty}P_{ii}^{(n)}<\infty
+V Add up the $n$-step return chances for state $i$.
+Q Use the test on an absorbing state $i$.
+S $P_{ii}=1$, so $P_{ii}^{(n)}=1$ for every $n$
+S $\sum P_{ii}^{(n)}=1+1+1+\cdots=\infty$
+A State $i$ is recurrent
+@ Closed Class, Positive & Null Recurrent
+E \text{Positive recurrent: } \tau_i<\infty
+E \text{Null recurrent: } \tau_i=\infty
+V $\tau_i$ = average time to return to state $i$
+V Closed class = once inside, you never leave it.
+Q For $P=\begin{bmatrix}0.7&0.3\\0.4&0.6\end{bmatrix}$, $\pi_0=\tfrac47$. Is state 0 positive recurrent? Use $\tau_i=\dfrac1{\pi_i}$.
+S $\tau_0=\dfrac{1}{\pi_0}=\dfrac74$
+S $\dfrac74$ is finite, so $\tau_0<\infty$
+A State 0 is positive recurrent
+@ Finite State Markov Chain Theorem
+E \text{(i) at least one state is recurrent}
+E \text{(ii) no state is null recurrent}
+E \text{(iii) irreducible} \Rightarrow \text{all states positive recurrent}
+V Finite = a limited number of states.
+Q $\begin{bmatrix}0.7&0.3\\0.4&0.6\end{bmatrix}$ is irreducible and finite. Classify its states.
+S It is irreducible (all entries $>0$)
+S It has 2 states only (finite)
+S By the theorem, all states are positive recurrent
+A Both states are positive recurrent
+@ Period of a State
+E d(i)=\gcd\{\,n\ge1:\ P_{ii}^{(n)}>0\,\}
+E \text{Aperiodic: } d(i)=1
+E \text{Periodic: } d(i)>1
+V $d(i)$ = the biggest number that divides all return times
+V gcd = greatest common divisor
+Q $P=\begin{bmatrix}0&1\\1&0\end{bmatrix}$. Find the period of state 0.
+S Start at 0, go to 1, then back to 0: returns at $n=2,4,6,\dots$
+S $P_{00}^{(1)}=0,\ P_{00}^{(2)}=1>0$
+S $d(0)=\gcd\{2,4,6,\dots\}=2$
+A $d(0)=2>1$, so periodic with period 2
+T If $P_{ii}>0$, a return in 1 step is possible, so $d(i)=1$ (aperiodic).
+`;
+const mods=[];let m,c;
+raw.split("\n").forEach(l=>{l=l.trim();if(!l)return;const k=l[0],t=l.slice(2).replace(/</g,"&lt;");
+if(k==="#"){m={t,c:[]};mods.push(m)}else if(k==="@"){c={t,E:[],V:[],S:[]};m.c.push(c)}
+else if(k==="E")c.E.push(t);else if(k==="V")c.V.push(t);else if(k==="Q")c.Q=t;else if(k==="S")c.S.push(t);else if(k==="A")c.A=t;else if(k==="T")c.T=t});
+const li=(a,x)=>a.map(t=>"<li"+(x?" class='"+x+"'":"")+">"+t+"</li>").join("");
+document.getElementById("app").innerHTML=mods.map(m=>"<h2>"+m.t+"</h2>"+m.c.map(c=>
+"<div class='card'><div class='row'><h3>"+c.t+"</h3><button class='btn' aria-expanded='false' aria-label='Show details'>+</button></div>"+
+"<div class='eq'>"+c.E.map(e=>"<div>$$"+e+"$$</div>").join("")+"</div>"+
+"<div class='more'><h4>What each symbol means</h4><ul>"+li(c.V)+"</ul>"+
+"<h4>Example question</h4><div class='q'>"+c.Q+"</div>"+
+"<h4>Step-by-step answer</h4><ol>"+li(c.S)+"</ol><div class='ans'>"+c.A+"</div>"+
+(c.T?"<div class='tip'>Tip: "+c.T+"</div>":"")+"</div></div>").join("")).join("");
+document.querySelectorAll(".btn").forEach(b=>b.onclick=()=>{const k=b.closest(".card"),o=k.classList.toggle("open");b.textContent=o?"−":"+";b.setAttribute("aria-expanded",o)});
+const hs=[...document.querySelectorAll("h2")],ns=[...document.querySelectorAll("#nav button")];
+ns.forEach((a,i)=>a.onclick=()=>hs[i].scrollIntoView({behavior:"smooth",block:"start"}));
+const act=()=>{let k=0;hs.forEach((h,i)=>{if(h.getBoundingClientRect().top<140)k=i});ns.forEach((a,i)=>a.classList.toggle("on",i===k))};
+addEventListener("scroll",act,{passive:true});act();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg.js" async></script>
+</body></html>
